@@ -10,13 +10,11 @@
 
 @class NBDetailViewController;
 
-#import <CoreData/CoreData.h>
-
-@interface NBMasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface NBMasterViewController : UITableViewController
 
 @property (strong, nonatomic) NBDetailViewController *detailViewController;
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+// Array to store values for timer
+@property (strong, nonatomic) NSArray *timerArray;
 
 @end

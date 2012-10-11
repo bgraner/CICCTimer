@@ -14,8 +14,6 @@
 		2F5FFECB162634540033E022 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFEC9162634540033E022 /* InfoPlist.strings */; };
 		2F5FFECD162634540033E022 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FFECC162634540033E022 /* main.m */; };
 		2F5FFED1162634540033E022 /* NBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FFED0162634540033E022 /* NBAppDelegate.m */; };
-		2F5FFED3162634540033E022 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFED2162634540033E022 /* Default.png */; };
-		2F5FFED5162634540033E022 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFED4162634540033E022 /* Default@2x.png */; };
 		2F5FFED7162634540033E022 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFED6162634540033E022 /* Default-568h@2x.png */; };
 		2F5FFEDA162634540033E022 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFED8162634540033E022 /* MainStoryboard_iPhone.storyboard */; };
 		2F5FFEDD162634540033E022 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFEDB162634540033E022 /* MainStoryboard_iPad.storyboard */; };
@@ -28,6 +26,8 @@
 		2F5FFEF1162634540033E022 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F5FFEC4162634530033E022 /* CoreData.framework */; };
 		2F5FFEF9162634540033E022 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFEF7162634540033E022 /* InfoPlist.strings */; };
 		2F5FFEFC162634540033E022 /* CICCTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FFEFB162634540033E022 /* CICCTimerTests.m */; };
+		2F5FFF0816267E940033E022 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFF0616267E940033E022 /* Default.png */; };
+		2F5FFF0916267E940033E022 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFF0716267E940033E022 /* Default@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +52,6 @@
 		2F5FFECE162634540033E022 /* CICCTimer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CICCTimer-Prefix.pch"; sourceTree = "<group>"; };
 		2F5FFECF162634540033E022 /* NBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NBAppDelegate.h; sourceTree = "<group>"; };
 		2F5FFED0162634540033E022 /* NBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NBAppDelegate.m; sourceTree = "<group>"; };
-		2F5FFED2162634540033E022 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		2F5FFED4162634540033E022 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		2F5FFED6162634540033E022 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2F5FFED9162634540033E022 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		2F5FFEDC162634540033E022 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
@@ -68,6 +66,8 @@
 		2F5FFEF8162634540033E022 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2F5FFEFA162634540033E022 /* CICCTimerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CICCTimerTests.h; sourceTree = "<group>"; };
 		2F5FFEFB162634540033E022 /* CICCTimerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CICCTimerTests.m; sourceTree = "<group>"; };
+		2F5FFF0616267E940033E022 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		2F5FFF0716267E940033E022 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +139,7 @@
 				2F5FFEE4162634540033E022 /* NBDetailViewController.h */,
 				2F5FFEE5162634540033E022 /* NBDetailViewController.m */,
 				2F5FFEDE162634540033E022 /* CICCTimer.xcdatamodeld */,
+				2F5FFF0516267E730033E022 /* Assets */,
 				2F5FFEC7162634540033E022 /* Supporting Files */,
 			);
 			path = CICCTimer;
@@ -151,8 +152,8 @@
 				2F5FFEC9162634540033E022 /* InfoPlist.strings */,
 				2F5FFECC162634540033E022 /* main.m */,
 				2F5FFECE162634540033E022 /* CICCTimer-Prefix.pch */,
-				2F5FFED2162634540033E022 /* Default.png */,
-				2F5FFED4162634540033E022 /* Default@2x.png */,
+				2F5FFF0616267E940033E022 /* Default.png */,
+				2F5FFF0716267E940033E022 /* Default@2x.png */,
 				2F5FFED6162634540033E022 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
@@ -175,6 +176,13 @@
 				2F5FFEF7162634540033E022 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2F5FFF0516267E730033E022 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,11 +258,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F5FFECB162634540033E022 /* InfoPlist.strings in Resources */,
-				2F5FFED3162634540033E022 /* Default.png in Resources */,
-				2F5FFED5162634540033E022 /* Default@2x.png in Resources */,
 				2F5FFED7162634540033E022 /* Default-568h@2x.png in Resources */,
 				2F5FFEDA162634540033E022 /* MainStoryboard_iPhone.storyboard in Resources */,
 				2F5FFEDD162634540033E022 /* MainStoryboard_iPad.storyboard in Resources */,
+				2F5FFF0816267E940033E022 /* Default.png in Resources */,
+				2F5FFF0916267E940033E022 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
