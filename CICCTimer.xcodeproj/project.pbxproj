@@ -28,6 +28,8 @@
 		2F5FFEFC162634540033E022 /* CICCTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5FFEFB162634540033E022 /* CICCTimerTests.m */; };
 		2F5FFF0816267E940033E022 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFF0616267E940033E022 /* Default.png */; };
 		2F5FFF0916267E940033E022 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFF0716267E940033E022 /* Default@2x.png */; };
+		2F5FFF0C162682020033E022 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFF0A162682020033E022 /* Icon.png */; };
+		2F5FFF0D162682020033E022 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFF0B162682020033E022 /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		2F5FFEFB162634540033E022 /* CICCTimerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CICCTimerTests.m; sourceTree = "<group>"; };
 		2F5FFF0616267E940033E022 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		2F5FFF0716267E940033E022 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		2F5FFF0A162682020033E022 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		2F5FFF0B162682020033E022 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,8 @@
 				2F5FFEC9162634540033E022 /* InfoPlist.strings */,
 				2F5FFECC162634540033E022 /* main.m */,
 				2F5FFECE162634540033E022 /* CICCTimer-Prefix.pch */,
+				2F5FFF0A162682020033E022 /* Icon.png */,
+				2F5FFF0B162682020033E022 /* Icon@2x.png */,
 				2F5FFF0616267E940033E022 /* Default.png */,
 				2F5FFF0716267E940033E022 /* Default@2x.png */,
 				2F5FFED6162634540033E022 /* Default-568h@2x.png */,
@@ -263,6 +269,8 @@
 				2F5FFEDD162634540033E022 /* MainStoryboard_iPad.storyboard in Resources */,
 				2F5FFF0816267E940033E022 /* Default.png in Resources */,
 				2F5FFF0916267E940033E022 /* Default@2x.png in Resources */,
+				2F5FFF0C162682020033E022 /* Icon.png in Resources */,
+				2F5FFF0D162682020033E022 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

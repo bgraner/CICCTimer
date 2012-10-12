@@ -27,11 +27,16 @@
     [super awakeFromNib];
 }
 
+/*
+ * Create the datasource for the tableview - for now just an array of arrays
+ * Each element is an NSNumber containing a float value that represent how much time the detail view timer should count down from
+ */
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     // Load the values for the timer array
+    // This is a pretty lame way to do this - loading in from a plist would be much, much nicer
     self.timerArray = [[NSArray alloc] initWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0],
                                                                                  [NSNumber numberWithFloat:7.0],
                                                                                  [NSNumber numberWithFloat:2.0],nil],
@@ -54,16 +59,32 @@
 
 
 #pragma mark - Table View
-
+/*
+ * Number of sections in datasource
+ */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return [self.timerArray count];
 }
 
+/*
+ * Number of rows in each section
+ */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    NSArray* rowArray = [self.timerArray objectAtIndex:section];
+    return [rowArray count];
 }
+
+/*
+ * Create a header for each section.  Format is just section number.  Better if it's human readable so add 1 to this value
+ */
+- (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString* sectionName = [NSString stringWithFormat:@"Section %d", (section+1)];
+    return sectionName;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -112,8 +133,7 @@
     //cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
     NSArray* sectionArray = [self.timerArray objectAtIndex:indexPath.section];
     NSNumber* currentCountdownNumber = [sectionArray objectAtIndex:indexPath.row];
-    
-    NSLog(@"%@", [currentCountdownNumber stringValue]);
+
     cell.textLabel.text = [currentCountdownNumber stringValue];
 }
 

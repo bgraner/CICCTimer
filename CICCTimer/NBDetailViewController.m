@@ -19,12 +19,14 @@
 @synthesize endTime;
 
 @synthesize countdownTimer;
-@synthesize completeTimer;
 
 @synthesize resetTimerAlert;
 
 #pragma mark - Managing the detail item
 
+/*
+ * Setter method for the detailItem (countdown time)
+ */
 - (void)setDetailItem:(id)newDetailItem
 {
     if (_detailItem != newDetailItem) {
@@ -71,19 +73,43 @@
     [self startTimer];
 }
 
+/*
+ * Invalidate the timer when we leave this screen
+ */
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [self.countdownTimer invalidate];
     self.countdownTimer = nil;
-    
-    [self.completeTimer invalidate];
-    self.completeTimer = nil;
-    
 }
 
 #pragma mark - Timer Methods
 
+/*
+ * Invalidate the timers/stop current timers
+ * Get the amount of time that should elapse and create the timers
+ */
+- (void) startTimer
+{
+    // Stop all timers
+    [self.countdownTimer invalidate];
+    
+    // Calculate the time interval based on the passed in detailItem
+    NSTimeInterval countdownInterval = [self.detailItem doubleValue];
+    
+    //Set the start timer to current timestamp
+    self.startTime = [NSDate date];
+    self.endTime = [NSDate dateWithTimeIntervalSinceNow:countdownInterval];
+    
+    self.countdownTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target: self selector: @selector(handleTimerTick) userInfo: nil repeats: YES];
+}
+
+/* 
+ * Called by NSTimer 'countdownTimer'
+ * Repeating
+ * Calculates the time remaining by taking the stop time interval minus the amount of time from when the timer started
+ * If the time remaining is 0 or less invalidates the NSTimer (stop counting down)
+ */
 -(void) handleTimerTick
 {
     NSDate* currentTime = [NSDate date];
@@ -91,16 +117,24 @@
     NSTimeInterval stopTime = floor([self.endTime timeIntervalSinceDate:self.startTime]);
     NSTimeInterval timeRemaining = stopTime - delta;
     
-    // Stop the timer when we reach or pass 0 seconds left
-    if (timeRemaining >= 0.0) {
-        NSLog(@"%f %f %f", delta, stopTime, timeRemaining);
-        self.detailDescriptionLabel.text = [NSString stringWithFormat:@"%.0f", timeRemaining];
-    } else {
+    NSLog(@"%f %f %f", delta, stopTime, timeRemaining);
+    self.detailDescriptionLabel.text = [NSString stringWithFormat:@"%.0f", timeRemaining];
+    
+    // If there is still time left update the label and continue counting down
+    // Otherwise we have finished, so invalidate the timer and display the popup asking to return or to reset the timer
+    if (timeRemaining <= 0.0) {
         [self.countdownTimer invalidate];
         self.countdownTimer = nil;
+        [self showTimerComplete];
     }
 }
 
+/*
+ * Called by the NSTimer 'completeTimer'
+ * Non repeating
+ * Called when this timer fires (non-repeating)
+ * Displays the alert view / dialog popup
+ */
 -(void) showTimerComplete
 {
     NSLog(@"Timer Complete");
@@ -110,33 +144,28 @@
     
 }
 
+#pragma mark - UIAlertViewDelegate delegate methods
 /*
- * Invalidate the timers/stop current timers
- * Get the amount of time that should elapse and create the timers
+ * Handle user pressing the cancel or other buttons
+ * Cancel button in this case is the 'Back' button that goes up one level
+ * Only one other button which is the 'Reset' button.  This will start the timer over again
  */
-- (void) startTimer
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    // Stop all timers
-    [self.completeTimer invalidate];
-    [self.countdownTimer invalidate];
-    
-    // Calculate the time interval based on the passed in detailItem
-    NSTimeInterval countdownInterval = [self.detailItem doubleValue];
-    
-    //Set the start timer to current timestamp
-    self.startTime = [NSDate date];
-    self.endTime = [NSDate dateWithTimeIntervalSinceNow:countdownInterval];
-    NSTimeInterval completeInterval = [self.endTime timeIntervalSinceDate:self.startTime];
-    
-    self.completeTimer = [NSTimer scheduledTimerWithTimeInterval:completeInterval target: self selector: @selector(showTimerComplete) userInfo: nil repeats: NO];
-    self.countdownTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target: self selector: @selector(handleTimerTick) userInfo: nil repeats: YES];
+    if (buttonIndex == 0) {
+        NSLog(@"Cancel");
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if (buttonIndex == 1) {
+        NSLog(@"Reset");
+        
+        // Reset the label to the starting time
+        self.detailDescriptionLabel.text = [self.detailItem stringValue];
+        
+        // Reset all of the NSTimers to begin the countdown
+        [self startTimer];
+    }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Split view
 
@@ -154,22 +183,10 @@
     self.masterPopoverController = nil;
 }
 
-#pragma mark - UIAlertViewDelegate delegate methods
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)didReceiveMemoryWarning
 {
-    if (buttonIndex == 0) {
-        NSLog(@"Cancel");
-        [self.navigationController popViewControllerAnimated:YES];
-    } else if (buttonIndex == 1) {
-        NSLog(@"Reset");
-        
-        // Reset the label to the starting time
-        self.detailDescriptionLabel.text = [self.detailItem stringValue];
-        
-        // Reset all of the NSTimers to begin the countdown
-        [self startTimer];
-    }
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end

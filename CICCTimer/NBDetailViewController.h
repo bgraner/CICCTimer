@@ -20,7 +20,6 @@
 @property (strong, nonatomic) NSDate* endTime;
 
 @property (strong, nonatomic) NSTimer* countdownTimer;
-@property (strong, nonatomic) NSTimer* completeTimer;
 
 @property (strong, nonatomic) UIAlertView* resetTimerAlert;
 
