@@ -119,7 +119,7 @@
 }
 
 /*
- * If the user taps a cell then present and update the detail view
+ * If the user taps a cell show the detail view
  * This is only used in the ipad version (currently not supported)
  * @param tableView tableView for delegate method
  * @param indexPath Index Path user selected/tapped
@@ -153,7 +153,7 @@
 }
 
 /*
- * Update the cell at the specified indexPath
+ * Update the layout of the cell at the specified indexPath
  */
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
