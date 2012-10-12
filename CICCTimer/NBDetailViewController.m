@@ -125,16 +125,18 @@
  */
 -(void) handleTimerTick
 {
+    // Calculate the current time for this tick
+    // We calculate the amount of time that has elapsed (delta), how long the timer should be (stopTime) and how much time we have left (timeRemaining)
     NSDate* currentTime = [NSDate date];
     NSTimeInterval delta = floor([currentTime timeIntervalSinceDate:self.startTime]);
     NSTimeInterval stopTime = floor([self.endTime timeIntervalSinceDate:self.startTime]);
     NSTimeInterval timeRemaining = stopTime - delta;
     
+    // Update label to show change in time
     NSLog(@"%f %f %f", delta, stopTime, timeRemaining);
     self.detailDescriptionLabel.text = [NSString stringWithFormat:@"%.0f", timeRemaining];
     
-    // If there is still time left update the label and continue counting down
-    // Otherwise we have finished, so invalidate the timer and display the popup asking to return or to reset the timer
+    // If no more time left we have finished, so invalidate the timer and display the popup asking to return or to reset the timer
     if (timeRemaining <= 0.0) {
         [self.countdownTimer invalidate];
         self.countdownTimer = nil;
