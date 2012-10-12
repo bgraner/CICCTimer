@@ -5,6 +5,13 @@
 //  Created by nazbot on 12-10-10.
 //  Copyright (c) 2012 notabene. All rights reserved.
 //
+//  Application to demonstrate technical proficiency
+//  Specs can be found at http://www.notabenestudios.com/cicc/timer/requirements.html
+//  Presents tableview with 3 sections, each section containing 3 items
+//  Tapping on any cell takes you to a detail view which will start a countdown timer
+//
+//
+
 
 #import "NBAppDelegate.h"
 
@@ -19,17 +26,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    // Commented out boilerplate
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
         splitViewController.delegate = (id)navigationController.topViewController;
         
-        UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-        NBMasterViewController *controller = (NBMasterViewController *)masterNavigationController.topViewController;
+        //UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
+        //NBMasterViewController *controller = (NBMasterViewController *)masterNavigationController.topViewController;
         //controller.managedObjectContext = self.managedObjectContext;
     } else {
-        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-        NBMasterViewController *controller = (NBMasterViewController *)navigationController.topViewController;
+        //UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+        //NBMasterViewController *controller = (NBMasterViewController *)navigationController.topViewController;
         //controller.managedObjectContext = self.managedObjectContext;
     }
     return YES;

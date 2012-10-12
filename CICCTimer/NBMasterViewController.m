@@ -35,22 +35,17 @@
 {
     [super viewDidLoad];
     
-    // Load the values for the timer array
-    // This is a pretty lame way to do this - loading in from a plist would be much, much nicer
-    self.timerArray = [[NSArray alloc] initWithObjects:[NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0],
-                                                                                 [NSNumber numberWithFloat:7.0],
-                                                                                 [NSNumber numberWithFloat:2.0],nil],
-                                                       [NSArray arrayWithObjects:[NSNumber numberWithFloat:10.0],
-                                                                                 [NSNumber numberWithFloat:6.0],
-                                                                                 [NSNumber numberWithFloat:4.0],nil],
-                                                       [NSArray arrayWithObjects:[NSNumber numberWithFloat:1.0],
-                                                                                 [NSNumber numberWithFloat:9.0],
-                                                                                 [NSNumber numberWithFloat:22.0],nil],
-                                                       nil];
+    // Load the values for the table row/timers from the plist 'TimerTableArray' in Supporting Files folder
+    NSString *timerValuesPath = [[NSBundle mainBundle] pathForResource:@"TimerTableArray" ofType:@"plist"];
+    self.timerArray = [[NSArray alloc] initWithContentsOfFile:timerValuesPath];
     
+    // Boilerplate to setup the split view
     self.detailViewController = (NBDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
+/*
+ * Clear and release memory if low memory warning called
+ */
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -85,7 +80,9 @@
     return sectionName;
 }
 
-
+/*
+ * Update cell with the timer value for that section/row
+ */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
@@ -93,27 +90,43 @@
     return cell;
 }
 
+/*
+ * We do not want the user to be able to edit the cell's
+ */
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return NO;
 }
 
-
+/*
+ * We do not want the user to be able to move cells
+ */
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // The table view should not be re-orderable.
     return NO;
 }
 
+/*
+ * If the user taps a cell then present and update the detail view
+ * This is only used in the ipad version (currently not supported)
+ */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        //NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        //self.detailViewController.detailItem = object;
+        NSArray* sectionArray = [self.timerArray objectAtIndex:indexPath.section];
+        NSNumber* currentCountdownNumber = [sectionArray objectAtIndex:indexPath.row];
+        
+        NSLog(@"%@", [currentCountdownNumber stringValue]);
+        self.detailViewController.detailItem = currentCountdownNumber;
     }
 }
 
+/*
+ * Segue to the detail view, using the value of the section/row of the cell that was tapped to pass in the
+ * time to count down from
+ */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
@@ -127,6 +140,9 @@
     }
 }
 
+/*
+ * Update the cell at the specified indexPath
+ */
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     //NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];

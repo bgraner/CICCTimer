@@ -30,6 +30,7 @@
 		2F5FFF0916267E940033E022 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFF0716267E940033E022 /* Default@2x.png */; };
 		2F5FFF0C162682020033E022 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFF0A162682020033E022 /* Icon.png */; };
 		2F5FFF0D162682020033E022 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFF0B162682020033E022 /* Icon@2x.png */; };
+		2F5FFF1B16279A4E0033E022 /* TimerTableArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F5FFF1A16279A4E0033E022 /* TimerTableArray.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		2F5FFF0716267E940033E022 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		2F5FFF0A162682020033E022 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		2F5FFF0B162682020033E022 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		2F5FFF1A16279A4E0033E022 /* TimerTableArray.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TimerTableArray.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				2F5FFF0616267E940033E022 /* Default.png */,
 				2F5FFF0716267E940033E022 /* Default@2x.png */,
 				2F5FFED6162634540033E022 /* Default-568h@2x.png */,
+				2F5FFF1A16279A4E0033E022 /* TimerTableArray.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				2F5FFF0916267E940033E022 /* Default@2x.png in Resources */,
 				2F5FFF0C162682020033E022 /* Icon.png in Resources */,
 				2F5FFF0D162682020033E022 /* Icon@2x.png in Resources */,
+				2F5FFF1B16279A4E0033E022 /* TimerTableArray.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +497,7 @@
 				2F5FFF01162634540033E022 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2F5FFF02162634540033E022 /* Build configuration list for PBXNativeTarget "CICCTimerTests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +506,7 @@
 				2F5FFF04162634540033E022 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

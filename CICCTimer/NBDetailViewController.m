@@ -34,6 +34,11 @@
         
         // Update the view.
         [self configureView];
+        
+        // If we are an iPad we need to start the timer as the split view doesn't respond to 'viewDidAppear'
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            [self startTimer];
+        }
     }
 
     if (self.masterPopoverController != nil) {
