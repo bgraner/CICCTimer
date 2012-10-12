@@ -24,8 +24,9 @@
 
 #pragma mark - Managing the detail item
 
-/*
+/**
  * Setter method for the detailItem (countdown time)
+ * @param newDetailItem The object to update member variable with
  */
 - (void)setDetailItem:(id)newDetailItem
 {
@@ -46,6 +47,9 @@
     }        
 }
 
+/**
+ * Update the label to show the value of the starting time
+ */
 - (void)configureView
 {
     // Update the user interface for the detail item.
@@ -55,7 +59,9 @@
     }
 }
 
-
+/**
+ * When view first loads, set some default values for the start and end times
+ */
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -69,7 +75,7 @@
     [self configureView];
 }
 
-/*
+/**
  * When the view appears we want to get the current time/date, calculate the stop date and time and start the timer
  */
 - (void) viewDidAppear:(BOOL)animated
@@ -78,7 +84,7 @@
     [self startTimer];
 }
 
-/*
+/**
  * Invalidate the timer when we leave this screen
  */
 - (void) viewWillDisappear:(BOOL)animated
@@ -90,9 +96,11 @@
 
 #pragma mark - Timer Methods
 
-/*
- * Invalidate the timers/stop current timers
- * Get the amount of time that should elapse and create the timers
+/**
+ * Method to start the timer countdown from the passed in number of seconds
+ * Invalidate the timer/stop current timers
+ * Schedule countdown timer to tick every second
+ * @see handleTimerTick
  */
 - (void) startTimer
 {
@@ -109,7 +117,7 @@
     self.countdownTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target: self selector: @selector(handleTimerTick) userInfo: nil repeats: YES];
 }
 
-/* 
+/**
  * Called by NSTimer 'countdownTimer'
  * Repeating
  * Calculates the time remaining by taking the stop time interval minus the amount of time from when the timer started
@@ -134,7 +142,7 @@
     }
 }
 
-/*
+/**
  * Called by the NSTimer 'completeTimer'
  * Non repeating
  * Called when this timer fires (non-repeating)
@@ -150,7 +158,7 @@
 }
 
 #pragma mark - UIAlertViewDelegate delegate methods
-/*
+/**
  * Handle user pressing the cancel or other buttons
  * Cancel button in this case is the 'Back' button that goes up one level
  * Only one other button which is the 'Reset' button.  This will start the timer over again

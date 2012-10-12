@@ -1,10 +1,10 @@
-//
-//  NBMasterViewController.m
-//  CICCTimer
-//
-//  Created by nazbot on 12-10-10.
-//  Copyright (c) 2012 notabene. All rights reserved.
-//
+///
+///  NBMasterViewController.m
+///  CICCTimer
+///
+///  Created by nazbot on 12-10-10.
+///  Copyright (c) 2012 notabene. All rights reserved.
+///
 
 #import "NBMasterViewController.h"
 
@@ -27,7 +27,7 @@
     [super awakeFromNib];
 }
 
-/*
+/**
  * Create the datasource for the tableview - for now just an array of arrays
  * Each element is an NSNumber containing a float value that represent how much time the detail view timer should count down from
  */
@@ -43,7 +43,7 @@
     self.detailViewController = (NBDetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
-/*
+/**
  * Clear and release memory if low memory warning called
  */
 - (void)didReceiveMemoryWarning
@@ -54,16 +54,18 @@
 
 
 #pragma mark - Table View
-/*
+/** 
  * Number of sections in datasource
+ * @param tableView tableView for delegate method
  */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [self.timerArray count];
 }
 
-/*
+/**
  * Number of rows in each section
+ * @param tableView tableView for delegate method
  */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -71,8 +73,10 @@
     return [rowArray count];
 }
 
-/*
+/**
  * Create a header for each section.  Format is just section number.  Better if it's human readable so add 1 to this value
+ * @param tableView tableView for delegate method
+ * @param section Section for this title
  */
 - (NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
@@ -80,8 +84,10 @@
     return sectionName;
 }
 
-/*
+/**
  * Update cell with the timer value for that section/row
+ * @param tableView tableView for delegate method
+ * @param indexPath indexPath of this cell
  */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -90,8 +96,10 @@
     return cell;
 }
 
-/*
- * We do not want the user to be able to edit the cell's
+/**
+ * Method to allow or prevent editing of cells.  In this case we do not want the user to be able to edit the cells
+ * @param tableView tableView for delegate method
+ * @param indexPath Index path to check for editability
  */
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -101,6 +109,8 @@
 
 /*
  * We do not want the user to be able to move cells
+ * @param tableView tableView for delegate method
+ * @param indexPath The index path we want to check we are allowed to move or not
  */
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -111,6 +121,8 @@
 /*
  * If the user taps a cell then present and update the detail view
  * This is only used in the ipad version (currently not supported)
+ * @param tableView tableView for delegate method
+ * @param indexPath Index Path user selected/tapped
  */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -123,7 +135,7 @@
     }
 }
 
-/*
+/**
  * Segue to the detail view, using the value of the section/row of the cell that was tapped to pass in the
  * time to count down from
  */
